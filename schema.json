@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "type": "object",
+  "title": "Union",
+  "allOf": [
+    {
+      "propertyNames": {
+        "anyOf": [
+          {"$ref": "#/definitions/TS/definitions/propertyNames"},
+          {"$ref": "#/definitions/TN/definitions/propertyNames"}
+        ]
+      }
+    },
+    {"$ref": "#/definitions/TS"},
+    {"$ref": "#/definitions/TN"}
+  ], 
+  "definitions": {
+    "TS": {
+      "definitions": {
+        "propertyNames": {
+          "enum": ["a1"]
+        }  
+      },
+      "type": "object",
+      "required": ["a1"],
+      "properties": {
+        "a1": {
+          "type": "string"
+        }
+      }
+    },
+    "TN": {
+      "definitions": {
+        "propertyNames": {
+          "enum": ["a2"]
+        }  
+      },
+      "type": "object",
+      "required": ["a2"],
+      "properties": {
+        "a2": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
