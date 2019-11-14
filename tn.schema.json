@@ -18,8 +18,8 @@
     }
   },
   "allOf": [
-    {"$ref": "#/definitions/TN/definitions/propertyNames"},
-    {"$ref": "#/definitions/TN/definitions/required"},
-    {"$ref": "#/definitions/TN/definitions/properties"}
+{ "propertyNames":   {"$ref": "#/definitions/propertyNames"}},
+    {"$ref": "#/definitions/required"},
+    {"$ref": "#/definitions/properties"}
   ]
 }

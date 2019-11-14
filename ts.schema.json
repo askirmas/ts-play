@@ -17,9 +17,9 @@
     }
   },
   "type": "object",
-  "allOf": [
-    {"$ref": "#/definitions/TS/definitions/propertyNames"},
-    {"$ref": "#/definitions/TS/definitions/required"},
-    {"$ref": "#/definitions/TS/definitions/properties"}
+  "allOf": [    
+    {"propertyNames": {"$ref": "#/definitions/propertyNames"}},
+    {"$ref": "#/definitions/required"},
+    {"$ref": "#/definitions/properties"}
   ]
 }
