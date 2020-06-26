@@ -13,3 +13,11 @@ interface JSON {
   parse(source: string) :JsonNative
   parse<R extends JsonReviver<any>>(text: string, reviver: R): ReturnType<R>;
 }
+
+interface Set<T> {
+  has(value: any): boolean 
+}
+
+interface Map<K, V> {
+  has(key: any): boolean 
+}
