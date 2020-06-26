@@ -1,5 +1,5 @@
 /// <reference lib="es5" />
-/// <reference path="./ontology.d.ts"/>
+/// <reference path="./es.ontology.d.ts"/>
 
 declare type stringy = string | number
 
