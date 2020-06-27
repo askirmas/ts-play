@@ -1,6 +1,8 @@
-/// <reference lib="es5" />
+/// <reference lib="es2015.collection" />
 
 type onIntersection<T1,T2, T, F> = (T1 & T2) extends never ? F : T 
+
+// TODO ReadonlyMap
 
 interface Set<T> {
   has<V>(value: V): onIntersection<T, V, boolean, false>
