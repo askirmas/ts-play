@@ -12,12 +12,12 @@ interface WeakSet<T> {
 }
 
 interface Map<K, V> {
-  has<T>(value: T): onIntersection<K, T, boolean, false>
-  delete<T>(value: onIntersection<K, T, T, never>): boolean
-  // TODO: Add get
+  has<T>(key: T): onIntersection<K, T, boolean, false>
+  delete<T>(key: onIntersection<K, T, T, never>): boolean
+  get<T>(key: onIntersection<K, T, T, never>): V | undefined;
 }
 interface WeakMap<K, V> {
-  has<T>(value: T): onIntersection<K, T, boolean, false>
-  delete<T>(value: onIntersection<K, T, T, never>): boolean
-  // TODO: Add get
+  has<T>(key: T): onIntersection<K, T, boolean, false>
+  delete<T>(key: onIntersection<K, T, T, never>): boolean
+  get<T>(key: onIntersection<K, T, T, never>): V | undefined;
 }

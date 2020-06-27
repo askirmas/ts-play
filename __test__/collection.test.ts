@@ -50,3 +50,25 @@ describe("collection/Set<string|undefined>", () => {
   })
 }) 
 
+
+describe("collections/Map", () => {
+  const myMap = new Map([[-1, false], [0, undefined], [1, true]] as const)
+  it("get not of key", () => {
+    const anotherNumber = -2 as const
+    return expect(
+      //@ts-expect-error
+      myMap.get(anotherNumber)
+    ).toBe(
+      undefined
+    )
+  })
+
+  it("get upset", () => {
+    const justNumber = -2
+    return expect(
+      myMap.get(justNumber)
+    ).toBe(
+      undefined
+    )
+  })
+})
