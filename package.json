@@ -16,5 +16,9 @@
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false
 }
