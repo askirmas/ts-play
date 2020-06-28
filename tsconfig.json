@@ -72,5 +72,6 @@
     "lib",
     "types",
     "__test__", 
+    "sandbox"
   ]
 }
