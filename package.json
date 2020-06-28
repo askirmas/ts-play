@@ -1,6 +1,6 @@
 {
-  "name": "ts",
-  "version": "1.0.0",
+  "name": "ts-swiss",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -12,6 +12,7 @@
   "devDependencies": {
     "@types/jest": "^26.0.3",
     "jest": "^26.1.0",
+    "np": "^6.2.5",
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
