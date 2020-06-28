@@ -45,9 +45,10 @@
     // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
     // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
     "typeRoots": [
-      "node_modules/@types/jest",
-      "./types",
-      "./experimental"
+      "node_modules/@types",
+      "lib",
+      "types",
+      "experimental"
     ],                       /* List of folders to include type definitions from. */
     // "types": [
     //   "./natives"
@@ -68,7 +69,7 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "include": [
-    "types",
-    "__test__"
+    "lib",
+    "__test__", "types/utils.d.ts"
   ]
 }
