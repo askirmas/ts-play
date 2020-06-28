@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --runInBand",
-    "test:dev": "npm run test -- --watch"
+    "test": "tsc && jest --runInBand",
+    "test/j:dev": "npm run test -- --watch",
+    "test/t:dev": "tsc --watch"
   },
   "author": "",
   "license": "ISC",
