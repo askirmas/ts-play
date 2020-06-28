@@ -70,6 +70,7 @@
   },
   "include": [
     "lib",
-    "__test__", "types/utils.d.ts"
+    "types",
+    "__test__", 
   ]
 }
