@@ -1,30 +1,53 @@
-type _Reserve<R extends string, T, E = never> = Record<string, T> & {[k in R]: E }
-type Reserve<R extends string, T, E = never> = Record<string, T> & {[k in R]?: E }
-type R1 = _Reserve<"a", string, never>
-type R2 = _Reserve<"b"|"a", string, undefined>
+type _Anti<R extends string, T, E = never> = Record<string, T> & {[k in R]: E }
+type AntiRecord<R extends string, T, E = never> = Record<string, T> & {[k in R]?: E }
+type _Anti2<R extends string, T, E = never> = Record<string, T> & {[k in R]: E }
 
 
-function res1(source: R1) {
+type R1 = _Anti<"a", string, never>
+type R2 = _Anti<"b"|"a", string, undefined>
+
+
+function _anti_1(source: R1) {
   const a: undefined = source.a
   , b: string = source.b
   , c: string = source.c
   return {a,b,c}
 }
 
-function res2(source: R2) {
+function _anti_2(source: R2) {
   const a: undefined = source.a
   , b: undefined = source.b
   , c: string = source.c
   return {a, b, c}
 }
 
-type Additinioze<S, T0, E = never> = {
-  [P in keyof S]: S[P] extends E ? T0 : S[P] 
+
+type Additinioze<A, T0, E = never> = {
+  [P in keyof A]: A[P] extends E ? T0 : A[P] 
+}
+type Additional<K extends string, T1, T2, E = never> = Additinioze<_Anti<K, T2, E>, T1, E>
+
+type Add2Source = {items: number[], id: string}
+type Add2_Additional = Additional<keyof Add2Source, Add2Source[keyof Add2Source], number>
+
+type Additinioze2<A, S, E = never> = {
+  [P in keyof A]: A[P] extends E ? S extends {[K in P]: infer X} ? X : A[P] : A[P] 
+}
+type Add22 = Additinioze2<_Anti<keyof Add2Source, number>, Add2Source>
+
+function add2__2(source: Add22) {
+  const {items, id, additional, additional2} = source
+  return items[0] * additional * additional2 * id[0].length
 }
 
-type Additional<K extends string, T1, T2, E = never> = Additinioze<_Reserve<K, T2, E>, T1, E>
 
-type check0 = Additinioze<_Reserve<"a", number, never>, string, never>
+function add2__1(source: Add2_Additional) {
+  const {items, id, additional} = source
+  return items[0] + additional
+}
+
+
+type check0 = Additinioze<_Anti<"a", number, never>, string, never>
 type check1 = Additional<"a", string, number>
 
 function fn(source: check1) {
