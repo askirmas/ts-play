@@ -2,7 +2,6 @@
   "name": "ts-swiss",
   "version": "0.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "tsc --project tsconfig.test.json && jest --runInBand",
     "test/j:dev": "npm run test -- --watch",
@@ -17,6 +16,14 @@
     "ts-jest": "^26.1.1",
     "typescript": "^3.9.5"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/askirmas/ts-swiss.git"
+  },
+  "bugs": {
+    "url": "https://github.com/askirmas/ts-swiss/issues"
+  },
+  "homepage": "https://github.com/askirmas/ts-swiss#readme",
   "dependencies": {},
   "publishConfig": {
     "access": "public"
