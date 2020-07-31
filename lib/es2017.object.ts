@@ -1,5 +1,5 @@
 /// <reference lib="es2017.object" />
 
 interface ObjectConstructor {
-  entries<T extends {[k: string]: any}>(o: T): [string & keyof T, T[keyof T]][]
+  entries<T extends {[k: string]: any}>(o: T): {[P in keyof T]: [P, T[P]]}[keyof T][]
 }
