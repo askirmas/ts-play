@@ -135,3 +135,21 @@ desc("`Replace`", () => {
     })
   })
 })
+
+desc("`PickByValue`", () => {
+  tsIsEqual<PickByValue<
+    {"1": 1, "12": 1|2, "13": 1|3, "23": 2|3},
+    1|4
+  >,
+    {"1": 1}
+  >(true)
+})
+
+desc("`OmitByValue`", () => {
+  tsIsEqual<OmitByValue<
+    {"1": 1, "12": 1|2, "13": 1|3, "23": 2|3},
+    2|4
+  >,
+    {"1": 1, "13": 1|3}
+  >(true)
+})

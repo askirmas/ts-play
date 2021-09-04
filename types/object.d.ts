@@ -45,6 +45,15 @@ declare type Replace<T, R extends {[K in keyof T]?: unknown}> = Ever<
   Omit<T, keyof R> & R
 >
 
+declare type PickByValue<T, V> = Pick<T, {
+  [K in keyof T]: [T[K]] extends [V] ? K : never
+}[keyof T]>
+
+declare type OmitByValue<T, V> = Omit<T, {
+  [K in keyof T]: Ever<Extract<T[K], V>, K>
+}[keyof T]>
+
+
 /** @see https://stackoverflow.com/a/49579497/9412937 */
 declare type RequiredKeys<T> = { [K in keyof T]-?:
   ({} extends { [P in K]: T[K] } ? never : K)
