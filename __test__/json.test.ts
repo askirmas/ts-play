@@ -3,12 +3,12 @@ type MyJson = JsonPrimitive | Set<MyJson> | Map<string, MyJson>
 describe('json', () => {
   const obj = {"a": [1], "b": {"c": [0]}, "d": "e", "f": null}
   , jsonStr = JSON.stringify(obj)
-  , nativeParsed: Json = JSON.parse(jsonStr)
+  , nativeParsed: JsonType = JSON.parse(jsonStr)
   //@ts-expect-error
   , nativeIsNotMy: MyJson = nativeParsed
   , myParsed: MyJson = JSON.parse(jsonStr, myReviver) 
   //@ts-expect-error
-  , myParsedIsNotNative: Json = myParsed
+  , myParsedIsNotNative: JsonType = myParsed
   
   it('native', () => expect(
     nativeIsNotMy

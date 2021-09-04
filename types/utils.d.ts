@@ -2,17 +2,17 @@ declare type stringy = string | number
 
 // type PropertyKey === keyof any
 
-declare type stringed = "null" | "undefined" | "false" | "true"
-
 declare type Stringable<T = unknown> = T & (
   {toString(): string}
   | {toString: string}
 )
 declare type stringish = stringy | Stringable
 
-// functions
-declare type Monadish<A extends PropertyKey, R> = Monad<A,R> | Record<A, R> 
-declare type Monadic<A extends PropertyKey, R> = Nullable<Monad<A,R> | Record<A, R> | boolean>
+/**
+ * Resolves promise
+ * @see https://stackoverflow.com/a/49889856/9412937 
+*/
+declare type Unpromise<P> = P extends PromiseLike<infer T> ? Unpromise<T> : P
 
 // Set-Like
 declare type SettishObject<V extends string> = {[value in V]: value}
@@ -24,6 +24,18 @@ declare type Mappish<K extends string|symbol, V> = Map<K, V> | Record<K, V>
 
 // LOGICAL
 
+/** Keeps shape of `T` and alternates value with @default undefined */
+declare type Part<T, Alt = undefined> = { [P in keyof T]: Alt | T[P] }
+
+/** Spawns `T` values with alternative @default undefined */
+declare type Party<T, Alt = undefined> = T | { [P in keyof T]: Alt }
+
+/** Keeps literal shape of `T` and alternate  all primitive and array leaves @default undefined */
+declare type PartDeep<T, Alt = undefined> = T | (
+  T extends Dict
+  ? { [P in keyof T]: PartDeep<T[P]>}
+  : Alt
+)
 
 // Collection helpers
 
@@ -38,7 +50,7 @@ declare type Shredded<T, S = undefined | null>
 ? {[P in keyof T]?: S | Shredded<T[P], S>}
 : S | T  
 
-// Objects
+// Object or Array
 declare type ValueOf<
   T extends AnyObject,
   K extends number|string = Extract<keyof T, number|string>
@@ -72,3 +84,10 @@ declare type Tuple<T, MinLength extends number, MaxLength extends number = MinLe
 
 //@ts-expect-error
 declare type Range<Start extends number, End extends number> = Tuple<undefined, Start, End>["length"]
+
+/** @see https://stackoverflow.com/a/50375286/10325032 */
+declare type UnionToIntersection<Union> = (
+  Union extends any ? (argument: Union) => void : never
+) extends (argument: infer Intersection) => void
+? Intersection
+: never;

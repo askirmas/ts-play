@@ -30,7 +30,7 @@ function tsIntersection(source: T1 | T2 )  {
   return {value, value2, defaultTsWay}
 }
 
-function oneOfExample(source: OneOf<T1,T2> )  {
+function oneOfExample(source: OneOf<[T1,T2]> )  {
   const {a, c} = source
   /** Additional `undefined` because TS lost link with source but in any case much better */
   , value: string|undefined = a ?? c
