@@ -29,7 +29,7 @@ describe('json', () => {
   ))
 })
 
-function myReviver(key: string, value: JsonStructure<MyJson>) :MyJson {
+function myReviver(_: string, value: JsonStructure<MyJson>) :MyJson {
   if (value === null || typeof value !== 'object')
     return value
   if (Array.isArray(value))

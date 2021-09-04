@@ -27,6 +27,7 @@ function tsIntersection(source: T1 | T2 )  {
   //@ts-expect-error
   , shorterAttempy = source["a" in source ? "a" : "c"]
   
+  return {value, value2, defaultTsWay}
 }
 
 function oneOfExample(source: OneOf<T1,T2> )  {
@@ -35,5 +36,7 @@ function oneOfExample(source: OneOf<T1,T2> )  {
   , value: string|undefined = a ?? c
   /** Or just use `source` and no troubles at all */
   , value2: string = source.a ?? source.c
+
+  return {value, value2}
 }
 
