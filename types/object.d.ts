@@ -45,6 +45,31 @@ declare type Replace<T, R extends {[K in keyof T]?: unknown}> = Ever<
   Omit<T, keyof R> & R
 >
 
+/** @see https://stackoverflow.com/a/49579497/9412937 */
+declare type RequiredKeys<T> = { [K in keyof T]-?:
+  ({} extends { [P in K]: T[K] } ? never : K)
+}[keyof T]
+
+/** @see https://stackoverflow.com/a/49579497/9412937 */
+type OptionalKeys<T> = { [K in keyof T]-?:
+  ({} extends { [P in K]: T[K] } ? K : never)
+}[keyof T]
+
+/** @see https://stackoverflow.com/a/49579497/9412937 */
+type WritableKeys<T> = {
+  [P in keyof T]-?: ifEqual<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, P>
+}[keyof T];
+
+/** @see https://stackoverflow.com/a/49579497/9412937 */
+type ReadonlyKeys<T> = {
+  [P in keyof T]-?: ifEqual<{ [Q in P]: T[P] }, { -readonly [Q in P]: T[P] }, never, P>
+}[keyof T];
+
+/** @see https://github.com/microsoft/TypeScript/issues/31153#issuecomment-487872268 */
+declare type KnownKeys<T> = {
+  [K in keyof T]: string extends K ? never : number extends K ? never : K
+} extends {[_ in keyof T]: infer U} ? U : never;
+
 // TODO Lens
 // TODO Point
 // TODO Pointers
