@@ -13,6 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.22",
+    "@types/react": "^17.0.19",
     "git-hooks-wrapper": "^0.7.1",
     "jest": "^26.6.3",
     "np": "^7.4.0",
@@ -30,6 +31,9 @@
   "dependencies": {},
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "@types/react": "*"
   },
   "private": false
 }
