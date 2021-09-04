@@ -12,7 +12,7 @@ declare type SomeObject = Dict<unknown>
 declare type ObjectOnly<T> = Exclude<T, never|primitive|any[]>
 
 /**
- * More predictible than TS's `keyof`
+ * More predictible substitution of TS's `keyof`
  * @see https://github.com/microsoft/TypeScript/issues/33025
  * @see [tsconfig: `keyofStringsOnly`](https://www.typescriptlang.org/tsconfig#keyofStringsOnly)
  * */
@@ -23,8 +23,19 @@ declare type KeyOf<T> = Ever<
   >
 >
 
+/** `Part` subsitution. Keeps shape of `T` and alternates value with @default undefined */
+declare type Part<T, Alt = undefined> = { [P in keyof T]: Alt | T[P] }
+
+/** Keeps literal shape of `T` and alternate  all primitive and array leaves @default undefined */
+declare type PartDeep<T, Alt = undefined> = T | (
+  // TODO Replace with `ObjectOnly`
+  T extends Dict
+  ? { [P in keyof T]: PartDeep<T[P]>}
+  : Alt
+)
+
 /**
- * Stricts keys to omit to be in operated type in comparison with TS's `Omit`
+ * `Omit` substitution. Stricts keys to omitting to be in operated type
  */
 declare type Omitter<T, K extends keyof T> = Ever<Exclude<K, keyof T>, never, Omit<T, K>>
 
@@ -34,6 +45,6 @@ declare type Replace<T, R extends {[K in keyof T]?: unknown}> = Ever<
   Omit<T, keyof R> & R
 >
 
-// Lens
-// Point
-// Pointers
+// TODO Lens
+// TODO Point
+// TODO Pointers
