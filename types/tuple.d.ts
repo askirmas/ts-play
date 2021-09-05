@@ -1,6 +1,6 @@
-
-// Tuple 
-// based on https://stackoverflow.com/a/52490977/9412937
+/** Tuple
+ * @see based on https://stackoverflow.com/a/52490977/9412937
+ */
 type _Tuple<
   T,
   Length extends number,
@@ -20,8 +20,7 @@ type _Tuple<
 // type TR = _Tuple<number, 1, false, []>
 // type TO = _Tuple<number, 2, true, _Tuple<number, 1, false, []>>
 
-
-/** if `MinLength` > `MaxLength` will be loop */
+/** If `MinLength` > `MaxLength` will be loop */
 //@ts-expect-error
 declare type Tuple<T, MinLength extends number, MaxLength extends number = MinLength> = _Tuple<T, MaxLength, true, _Tuple<T, MinLength, false, []>>
 
@@ -37,3 +36,5 @@ declare type IndexOf<T extends any[]> = number extends T["length"] ? number
 : T extends [...infer Etc, infer _]
   ? OptionalTuple<Etc>["length"]
   : never
+
+// TODO Check `Pick` from Tuple

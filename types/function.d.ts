@@ -16,7 +16,10 @@ declare type Arg3<F extends Fn> = Parameters<F>[3]
 declare type Arg4<F extends Fn> = Parameters<F>[4]
 declare type Arg5<F extends Fn> = Parameters<F>[5]
 
-/** Awaited return of Function */
+/**
+ * Awaited return of Function
+ * @todo Consider `Pick` with second argument
+*/
 declare type Return<F extends Fn> = Unpromise<ReturnType<F>>
 
 // declare type Monadish<A extends PropertyKey, R> = Monad<A,R> | Record<A, R> 
