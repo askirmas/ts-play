@@ -53,7 +53,6 @@ declare type OmitByValue<T, V> = Omit<T, {
   [K in keyof T]: Ever<Extract<T[K], V>, K>
 }[keyof T]>
 
-
 /** @see https://stackoverflow.com/a/49579497/9412937 */
 declare type RequiredKeys<T> = { [K in keyof T]-?:
   ({} extends { [P in K]: T[K] } ? never : K)
@@ -78,6 +77,8 @@ type ReadonlyKeys<T> = {
 declare type KnownKeys<T> = {
   [K in keyof T]: string extends K ? never : number extends K ? never : K
 } extends {[_ in keyof T]: infer U} ? U : never;
+
+// TODO NeverKeys
 
 // TODO Lens
 // TODO Point
