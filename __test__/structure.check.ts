@@ -1,3 +1,7 @@
+desc("`KeyOf`", () => {
+  tsIsEqual<KeyOf<{"a": "a"}|[0]>, "a"|0>(true)
+})
+
 desc("`ValueOf`", () => {
   desc("Object", () => {
     tsIsEqual<
@@ -21,33 +25,21 @@ desc("`ValueOf`", () => {
     >(true)
   })
 
-  desc("TODO Union of array and object", () => {
-    type Source = [1, 2]|{"a": "a", "b": "b"}
-    type Probe = ValueOf<Source>
-    
+  desc("Union", () => {
     tsIsEqual<
-      Probe,
+      ValueOf<[1, 2]|{"a": "a", "b": "b"}>,
       1|2|"a"|"b"
-    >(
-      //@ts-expect-error TODO
-      true
-    )
-    tsIsEqual<
-      Probe,
-      1|2
     >(true)
+
     tsIsEqual<
-      keyof Source,
-      never
+      ValueOf<[1, 4]|[2, 5]|{0: "a", 1: 6}|{"0": "b", 1: 7}, 0>,
+      1|2|"a"|"b"
     >(true)
+
     tsIsEqual<
-      PropOf<Source>,
-      "a"|"b"
+      ValueOf<[1, 4]|[2, 5]|{0: "a", 1: 6}|{"0": "b", 1: 7}, "0">,
+      // WTF
+      1|2|"a"|"b"|4|5
     >(true)
   })
-
-  tsIsEqual<
-    ValueOf<[1, 2]|{0: "a", "1": "b"}, 0>,
-    1|"a"
-  >(true)
 })
