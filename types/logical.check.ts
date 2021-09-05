@@ -1,3 +1,10 @@
+import {
+  desc,
+  tsIsEqual,
+  tsChecks,
+  tsCheck
+} from "../check"
+
 desc("AnyOf", () => {
   desc("ab0", () => {
     type Probe = AnyOf<["a", "b", 0]>

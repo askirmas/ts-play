@@ -1,3 +1,9 @@
+import {
+  desc,
+  tsIsEqual,
+  tsChecks
+} from "../check"
+
 desc("Split", () => {
   desc("Simple consts", () => {
     tsIsEqual<

@@ -1,3 +1,8 @@
+import {
+  desc,
+  tsIsEqual
+} from "../check"
+
 desc("`OptionalTuple`", () => {
   tsIsEqual<
     OptionalTuple<[0, 1, 2]>,

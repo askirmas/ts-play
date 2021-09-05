@@ -1,3 +1,8 @@
+import {
+  desc,
+  tsIsEqual
+} from "../check"
+
 desc("Return", () => {
   tsIsEqual<
     Return<() => "sync">,

@@ -1,3 +1,9 @@
+import {
+  desc,
+  tsIsEqual,
+  tsChecks
+} from "../check"
+
 desc("`KeyOf`", () => {
   desc("Primitives", () => {
     tsIsEqual<keyof number, never>(false)
