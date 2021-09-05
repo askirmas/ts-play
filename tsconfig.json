@@ -72,7 +72,7 @@
     "lib",
     "types",
     "__test__", 
-    "sandbox",
-    "learn"
+    "./check.ts",
+    "sandbox"
   ]
 }
