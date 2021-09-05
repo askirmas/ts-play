@@ -41,7 +41,7 @@ desc("`ValueOf`", () => {
       never
     >(true)
     tsIsEqual<
-      KeyOf<Source>,
+      PropOf<Source>,
       "a"|"b"
     >(true)
   })

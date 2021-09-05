@@ -1,25 +1,25 @@
 desc("`KeyOf`", () => {
   desc("Primitives", () => {
     tsIsEqual<keyof number, never>(false)
-    tsIsEqual<KeyOf<number>, never>(true)
+    tsIsEqual<PropOf<number>, never>(true)
   })
 
   desc("`never`", () => {
     tsIsEqual<keyof never, string|number|symbol>(true)
-    tsIsEqual<KeyOf<never>, never>(true)
+    tsIsEqual<PropOf<never>, never>(true)
   })
 
   desc("Mix", () => {
     type Mix = never | number | {"a": string}
     tsIsEqual<keyof Mix, never>(true)
-    tsIsEqual<KeyOf<Mix>, "a">(true)
+    tsIsEqual<PropOf<Mix>, "a">(true)
   })
 
   desc("Objects union", () => {
     //* @see Check `OneOf` */
     type Union = {"a": "a"} | {"b": "b"}
     tsIsEqual<keyof Union, never>(true)
-    tsIsEqual<KeyOf<Union>, "a"|"b">(true)
+    tsIsEqual<PropOf<Union>, "a"|"b">(true)
   })
 
   desc("Array keys", () => {
@@ -31,7 +31,7 @@ desc("`KeyOf`", () => {
       //@ts-expect-error
       "3": "3"
     })
-    tsIsEqual<KeyOf<string[]>, never>(true)
+    tsIsEqual<PropOf<string[]>, never>(true)
 
     tsChecks<keyof [string, string]>({
       "reduce": "reduce",
@@ -40,7 +40,7 @@ desc("`KeyOf`", () => {
       //@ts-expect-error
       "3": "3"
     })
-    tsIsEqual<KeyOf<[string, string]>, never>(true)
+    tsIsEqual<PropOf<[string, string]>, never>(true)
   })
 })
 

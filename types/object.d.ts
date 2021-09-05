@@ -16,7 +16,7 @@ declare type ObjectOnly<T> = Exclude<T, never|primitive|any[]>
  * @see https://github.com/microsoft/TypeScript/issues/33025
  * @see [tsconfig: `keyofStringsOnly`](https://www.typescriptlang.org/tsconfig#keyofStringsOnly)
  * */
-declare type KeyOf<T> = Ever<
+declare type PropOf<T> = Ever<
   ObjectOnly<T>,
   keyof UnionToIntersection<
     ObjectOnly<T>

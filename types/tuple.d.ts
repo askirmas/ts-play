@@ -27,3 +27,13 @@ declare type Tuple<T, MinLength extends number, MaxLength extends number = MinLe
 
 //@ts-expect-error
 declare type Range<Start extends number, End extends number> = Tuple<undefined, Start, End>["length"]
+
+declare type OptionalTuple<T extends any[]> = number extends T["length"] ? T
+: T extends [...infer Etc, infer TLast]
+  ? [...OptionalTuple<Etc>, TLast?]
+  : T
+
+declare type IndexOf<T extends any[]> = number extends T["length"] ? number
+: T extends [...infer Etc, infer _]
+  ? OptionalTuple<Etc>["length"]
+  : never
